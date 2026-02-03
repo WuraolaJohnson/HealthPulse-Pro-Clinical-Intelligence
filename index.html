@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPulse Pro | Clinical Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="icon">⚕️</span>
+                <h1>HealthPulse Pro</h1>
+            </div>
+            <nav id="app-nav">
+                <a href="#" class="active" data-view="home">Diagnostic Engine</a>
+            </nav>
+            <div class="system-status">
+                <div id="data-status" class="status-badge loading">Syncing Clinical Data...</div>
+            </div>
+            <div class="disclaimer-mini">
+                <p>⚠️ Bayesian clinical inference. Not a substitute for professional advice.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- Intro Loading Page -->
+            <div id="loading-overlay" class="intro-overlay">
+                <div class="intro-content">
+                    <div class="intro-logo">
+                        <span class="intro-icon">⚕️</span>
+                        <h1 class="intro-title">HealthPulse Pro</h1>
+                        <p class="intro-tagline">Clinical Intelligence Powered by Bayesian Inference</p>
+                    </div>
+
+                    <div class="intro-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🧬</span>
+                            <p>Advanced Diagnostic Engine</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📊</span>
+                            <p>Evidence-Based Analysis</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <p>Personalized Results</p>
+                        </div>
+                    </div>
+
+                    <div class="intro-loader">
+                        <div class="loader-bar"></div>
+                        <p id="loading-status" class="loading-text">Initializing Clinical Model...</p>
+                    </div>
+
+                    <div class="intro-disclaimer">
+                        <p>⚠️ For educational purposes only. Not a substitute for professional medical advice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 1: START / AGE SELECTION -->
+            <div id="view-home" class="view">
+                <header>
+                    <h2>Clinical Profile Setup</h2>
+                    <p>Configure demographic priors for Bayesian calculation.</p>
+                </header>
+
+                <div class="profile-setup-section">
+                    <h3>Biological Gender</h3>
+                    <div class="gender-selector">
+                        <button class="gender-chip" data-gender="Male">Male</button>
+                        <button class="gender-chip" data-gender="Female">Female</button>
+                    </div>
+                </div>
+
+                <div class="profile-setup-section">
+                    <h3>Age Bracket</h3>
+                    <div class="selection-grid" id="age-group-cards">
+                        <!-- Age group cards injected here -->
+                    </div>
+                </div>
+
+                <div class="hero-action hidden" id="hero-start-container">
+                    <button id="start-btn" class="btn-primary large">Continue to Symptom Analysis</button>
+                </div>
+            </div>
+
+            <!-- VIEW 2: SYMPTOM QUESTIONNAIRE -->
+            <div id="view-symptoms" class="view hidden">
+                <header>
+                    <div class="header-with-action">
+                        <div>
+                            <h2>Symptom Assessment</h2>
+                            <p id="symptom-counter">Analyzing clinical indicators...</p>
+                        </div>
+                        <button id="reset-btn" class="btn-outline">Restart Assessment</button>
+                    </div>
+                    <div class="progress-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                </header>
+
+                <div class="question-layout">
+                    <div id="questionnaire-card" class="question-card">
+                        <div class="question-content">
+                            <h3 id="current-symptom-name">Do you have Fever?</h3>
+                        </div>
+                        <div class="response-actions">
+                            <button class="resp-btn" data-value="Yes">Yes</button>
+                            <button class="resp-btn" data-value="Maybe">Maybe</button>
+                            <button class="resp-btn" data-value="No">No</button>
+                            <button class="resp-btn" data-value="Not Sure">Not Sure</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: ANALYSIS PHASE -->
+            <div id="view-analysis" class="view hidden">
+                <div class="analysis-container">
+                    <div class="pulse-ring"></div>
+                    <h2>Performing Bayesian Inference...</h2>
+                    <p id="analysis-step" class="mono">Initializing posterior distributions...</p>
+                </div>
+            </div>
+
+            <!-- VIEW 4: RESULTS -->
+            <div id="view-results" class="view hidden">
+                <header>
+                    <h2>Probability Results</h2>
+                    <p id="results-count-summary">Calculated using Naive Bayesian Inference based on clinical records.
+                    </p>
+                </header>
+
+                <section class="primary-result" id="primary-diagnosis">
+                    <!-- Hero card injected here -->
+                </section>
+
+                <section class="secondary-results">
+                    <h3>Other Considerations</h3>
+                    <div id="secondary-list" class="predictions-grid">
+                        <!-- Other results injected here -->
+                    </div>
+                </section>
+
+                <section class="statistical-audit">
+                    <div class="audit-card">
+                        <h4>Statistical Parameters</h4>
+                        <ul id="stastistic-notes" class="mono-list">
+                            <li>Smoothing Algorithm: Laplace (α = 1)</li>
+                            <li>Feature Weights: Symmetric Likelihood</li>
+                            <li>Prior Mapping: Demographic Categorization</li>
+                        </ul>
+                    </div>
+                    <div class="actions-row">
+                        <button id="export-btn" class="btn-secondary">Export Diagnostic Data</button>
+                        <button id="restart-btn" class="btn-primary">Start New Analysis</button>
+                    </div>
+                </section>
+            </div>
+
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
