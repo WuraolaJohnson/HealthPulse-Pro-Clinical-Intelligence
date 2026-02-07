@@ -317,6 +317,15 @@ nav a.active {
     margin: 0.5rem 0;
 }
 
+.result-tags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .agreement-tag {
     display: inline-block;
     padding: 6px 14px;
@@ -337,6 +346,7 @@ nav a.active {
     color: var(--accent-teal);
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Stats Cards */
@@ -400,6 +410,34 @@ nav a.active {
     padding: 0.75rem 1.5rem;
     border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-secondary {
+    background: rgba(45, 212, 191, 0.1);
+    color: var(--accent-teal);
+    border: 1px solid rgba(45, 212, 191, 0.3);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btn-secondary:hover {
+    background: rgba(45, 212, 191, 0.2);
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-secondary svg {
+    width: 20px;
+    height: 20px;
 }
 
 .progress-container {
@@ -409,6 +447,16 @@ nav a.active {
     margin-top: 1.5rem;
     width: 100%;
     overflow: hidden;
+}
+
+
+
+.actions-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
 }
 
 .progress-bar {
@@ -735,6 +783,9 @@ nav a.active {
 
     .primary-result-card {
         padding: 2.5rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
     }
 
     .result-main h1 {
@@ -830,10 +881,15 @@ nav a.active {
         border-radius: 24px;
         flex-direction: column;
         text-align: center;
+        gap: 1.5rem;
     }
 
     .result-main h1 {
         font-size: 2rem;
+    }
+
+    .result-tags {
+        justify-content: center;
     }
 
     .prob-circle {
@@ -854,7 +910,11 @@ nav a.active {
         gap: 1rem;
     }
 
-    .actions-row button {
+    /* Target all buttons within actions-row */
+    .actions-row button,
+    .btn-secondary,
+    .btn-primary {
         width: 100%;
+        justify-content: center;
     }
 }
