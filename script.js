@@ -464,6 +464,7 @@ function calculateProbabilities() {
 // 3. UI CONTROLLER
 function setupUIListeners() {
     document.getElementById('start-btn').onclick = () => switchView('symptoms');
+    document.getElementById('back-btn').onclick = handleBack;
     document.getElementById('reset-btn').onclick = resetApp;
     document.getElementById('restart-btn').onclick = resetApp;
     document.getElementById('export-btn').onclick = exportAnalysis;
@@ -484,6 +485,13 @@ function setupUIListeners() {
     document.getElementById('app-nav').onclick = (e) => {
         if (e.target.dataset.view) switchView(e.target.dataset.view);
     };
+}
+
+function handleBack() {
+    if (state.currentIndex > 0) {
+        state.currentIndex--;
+        renderQuestion();
+    }
 }
 
 function renderAgeGroups() {
@@ -534,6 +542,25 @@ function renderQuestion() {
 
     const progress = ((idx + 1) / state.allSymptoms.length) * 100;
     document.getElementById('progress-bar').style.width = `${progress}%`;
+
+    // Manage Back Button
+    const backBtn = document.getElementById('back-btn');
+    if (idx > 0) {
+        backBtn.classList.remove('hidden');
+    } else {
+        backBtn.classList.add('hidden');
+    }
+
+    // Reset button highlights and restore previous selection if any
+    document.querySelectorAll('.resp-btn').forEach(btn => {
+        btn.blur(); // Remove focus
+        btn.classList.remove('active-response'); // Remove active style
+
+        // If there is a saved response, highlight it
+        if (state.selections.responses[sym] === btn.dataset.value) {
+            btn.classList.add('active-response');
+        }
+    });
 }
 
 async function runAnalysis() {
